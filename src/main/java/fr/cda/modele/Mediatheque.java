@@ -24,7 +24,8 @@ public class Mediatheque {
         int mois = dateIdent.get(Calendar.MONTH);
         compteurMedia++;
         String ident = String.format("%d-%02d-%05d", annee, mois, compteurMedia);
-        Media newMedia = new Media(ident, categorie, sousCategorie, description);
+        Categorie categorieSelected = Categorie.valueOf(categorie.toUpperCase());
+        Media newMedia = new Media(ident, categorieSelected, sousCategorie, description);
         listMedias.add(newMedia);
     }
 

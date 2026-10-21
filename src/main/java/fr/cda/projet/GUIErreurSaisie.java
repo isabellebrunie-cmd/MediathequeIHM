@@ -9,8 +9,8 @@ public class GUIErreurSaisie implements FormulaireInt {
 
     public GUIErreurSaisie(GUISite formPP, String message) {
         this.formPP = formPP;
-        Formulaire form = new Formulaire("Erreur de saisie", this, 320, 260);
-        form.addText("ERREUR", "Erreur", false, message);
+        Formulaire form = new Formulaire("Erreur !", this, 320, 260);
+        form.addLabel(message);
         form.addButton("FERMER", "Fermer");
         //Position de la fenêtre principale
         form.setPosition(300, 300);

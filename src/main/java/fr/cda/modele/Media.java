@@ -4,14 +4,14 @@ import java.time.LocalDate;
 
 public class Media {
     private String identificateur;
-    private String categorie;
+    private Categorie categorie;
     private String sousCategorie;
     private String description;
     //Peuvent être null :
     private Emprunteur emprunteur;
     private LocalDate dateEmprunt;
 
-    public Media(String identificateur, String categorie, String sousCategorie, String description, Emprunteur emprunteur, LocalDate dateEmprunt) {
+    public Media(String identificateur, Categorie categorie, String sousCategorie, String description, Emprunteur emprunteur, LocalDate dateEmprunt) {
         this.identificateur = identificateur;
         this.categorie = categorie;
         this.sousCategorie = sousCategorie;
@@ -20,7 +20,7 @@ public class Media {
         this.dateEmprunt = dateEmprunt;
     }
 
-    public Media(String identificateur, String categorie, String sousCategorie, String description) {
+    public Media(String identificateur, Categorie categorie, String sousCategorie, String description) {
         this.identificateur = identificateur;
         this.categorie = categorie;
         this.sousCategorie = sousCategorie;
@@ -30,8 +30,6 @@ public class Media {
     public Media(String identificateur) {
         this.identificateur = identificateur;
     }
-
-    public enum categorie {LIVRE, DVD, CD, JEU};
 
     //Méthode utilisée par indexOf qui teste si deux médias sont identiques
     //deux médias sont identiques si ils ont le même identifiants.
@@ -48,11 +46,11 @@ public class Media {
         this.identificateur = identificateur;
     }
 
-    public String getCategorie() {
+    public Categorie getCategorie() {
         return categorie;
     }
 
-    public void setCategorie(String categorie) {
+    public void setCategorie(Categorie categorie) {
         this.categorie = categorie;
     }
 
@@ -101,6 +99,7 @@ public class Media {
     }
 
     public String serialiser() {
-        return String.join(" ", this.getIdentificateur(), this.categorie, this.sousCategorie, this.description);
+        String cat = this.categorie.name();
+        return String.join(" ", this.getIdentificateur(), cat, this.sousCategorie, this.description);
     }
 }
